@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.z.shiro_study.dao.PermissionDao">
+
+    <select id="queryPermissionByUsername" resultSets="java.util.Set" resultType="java.lang.String">
+        select p.permission_code
+        from tb_users t2
+        inner join tb_urs tu on t2.user_id = tu.uid
+        inner join tb_roles tr on tu.rid = tr.role_id
+        inner join tb_rps t on tr.role_id = t.rid
+        inner join tb_permission p on p.permission_id = t.pid
+        where t2.username = #{uername};
+
+    </select>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ehcache updateCheck="false" dynamicConfig="false">
+
+    <!-- diskStore：为缓存路径 -->
+    <diskStore path="D:\TEMP" />
+    <!-- timeToLiveSeconds 存活时间  maxEntriesLocalHeap 最大的存储条目 -->
+    <cache name="users" timeToLiveSeconds="300" maxEntriesLocalHeap="1000"/>
+
+    <!--
+    maxElementsInMemory 缓存的最大数目
+     eternal 是否永久存储，一但设置了，timeout将不起作用
+    timeToIdleSeconds 允许缓存空闲的最大时间
+    timeToLiveSeconds  存活时间
+    overflowToDisk 缓存超出的时候是否存储到磁盘  如果不存储，那么缓存过多时，就会删除老的缓存
+    maxElementsOnDisk 硬盘最大缓存个数
+    diskPersistent  是否在磁盘上持久化。指重启jvm后，数据是否有效。默认为false。
+    diskExpiryThreadIntervalSeconds  磁盘失效 线程运行时间间隔，默认是120秒
+    memoryStoreEvictionPolicy：当达到maxElementsInMemory限制时，Ehcache将会根据指定的策略去清理内存。默认策略是LRU（最近最少使用）。你可以设置为FIFO（先进先出）或是LFU（较少使用）。
+    memoryStoreEvictionPolicy:可选策略有：LRU（最近最少使用，默认策略）、FIFO（先进先出）、LFU（最少访问次数）。
+    -->
+    <defaultCache name="defaultCache"
+                  maxElementsInMemory="10000"
+                  eternal="false"
+                  timeToIdleSeconds="120"
+                  timeToLiveSeconds="120"
+                  overflowToDisk="false"
+                  maxElementsOnDisk="100000"
+                  diskPersistent="false"
+                  diskExpiryThreadIntervalSeconds="120"
+                  memoryStoreEvictionPolicy="LRU"/>
+</ehcache>
+

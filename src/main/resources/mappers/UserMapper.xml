@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.z.shiro_study.dao.UserDao">
+
+    <resultMap id="userMap" type="com.z.shiro_study.entity.User">
+        <id column="user_id" property="uesrId"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="userPwd"/>
+        <result column="password_salt" property="pwdSalt"/>
+    </resultMap>
+    <select id="queryUserByUsername" resultMap="userMap">
+        select * from tb_users where username = #{username};
+    </select>
+
+</mapper>
